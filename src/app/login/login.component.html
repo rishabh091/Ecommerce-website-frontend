@@ -1,1 +1,58 @@
-<p>login works!</p>
+<div class="container-fluid text-right p-3">
+  <a href="home"><i class="material-icons text-muted">home</i></a>
+</div>
+
+<div class="container-fluid">
+  <h1 class="display-3 text-center heading-border">The Electronics Store</h1>
+
+  <div class="d-flex justify-content-center mt-5">
+    <img
+      src="https://image.flaticon.com/icons/svg/1055/1055687.svg"
+      class="img-fluid img-size p-3 border"
+    />
+    <div class="p-3 border pr-5">
+      <form class="text-center">
+        <div class="form-group">
+          <div class="input-group pl-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="material-icons">person</i></span
+              >
+            </div>
+            <input type="text" class="form-control" placeholder="Username" />
+          </div>
+          <div class="text-danger pl-5 error-msg">
+            Username or password can't be recognised.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group pt-2 pl-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="material-icons">vpn_key</i></span
+              >
+            </div>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+            />
+          </div>
+          <div class="text-danger pl-5 error-msg">
+            Username or password can't be recognised.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary pl-5 pr-5 mt-2">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="text-center container mt-4">
+    New to the store?
+    <a href="signup">Sign In</a>
+  </div>
+</div>

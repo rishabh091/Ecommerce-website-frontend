@@ -1,0 +1,22 @@
+.img-size{
+    height: 500px;
+    width: 500px;
+}
+.heading-border{
+    border-bottom: 3px solid #ca3e47;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+.error-msg{
+    display: none;
+}
+
+@media screen and (max-width: 500px){
+    .img-size{
+        display: none;
+    }
+    .heading-border{
+        border-bottom: 3px solid #ca3e47;
+        margin: 0px;
+    }
+}

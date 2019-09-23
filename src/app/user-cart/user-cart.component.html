@@ -1,1 +1,31 @@
-<p>user-cart works!</p>
+<app-navbar></app-navbar>
+
+<div class="container border">
+    <div class="d-flex">
+        <img src="../../assets/iphoneX.png" class="img-fluid cart-img m-4">
+
+        <div class="m-4">
+            <!--Product name-->
+            <h4 class="display-5 heading-border mb-2">Apple Iphone X (64gb)</h4>
+            <!--Price of product-->
+            <div><span class="font-weight-bold">Price : </span>&#x20B9; 1,15,000</div>
+            <!--Change Quantity-->
+            <div><span class="font-weight-bold">Quantity : </span>
+                <div class="d-flex mt-2">
+                    <button type="button" class="btn btn-secondary pl-2 pr-2">+</button>
+                    <div class="pl-3 pr-3 pt-2">1</div>
+                    <button type="button" class="btn btn-secondary pl-2 pr-2">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative ml-auto my-auto text-center m-4">
+            <button type="button" class="btn btn-primary">Remove</button>
+        </div>
+    </div>
+</div>
+
+<div class="container p-5 d-flex justify-css">
+    <button type="button" class="btn btn-outline-primary" (click)="goToHome()">Buy more of our stuff</button>
+    <button type="button" class="btn btn-outline-success">Procced To Checkout</button>
+</div>

@@ -1,1 +1,43 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-md navbar-color navbar-dark">
+  <a class="navbar-brand" href="#">Electronics Store</a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav position-relative ml-auto">
+      <li class="nav-item">
+        <a class="nav-link text-light" href="signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="cart">My Cart</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid bg-search">
+  <div class="form-group d-flex justify-content-center p-4">
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+      Categories
+    </button>
+
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Laptops</a>
+      <a class="dropdown-item" href="#">Mobiles</a>
+      <a class="dropdown-item" href="#">Desktops</a>
+    </div>
+
+    <input type="text" class="p-2 input-size" placeholder="Search..">
+    <button type="button" class="btn btn-primary pt-2"><i class="material-icons">search</i></button>
+  </div>
+</div>

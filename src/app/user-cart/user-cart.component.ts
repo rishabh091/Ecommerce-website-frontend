@@ -12,4 +12,8 @@ export class UserCartComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToHome(){
+    location.href="home";
+  }
+
 }

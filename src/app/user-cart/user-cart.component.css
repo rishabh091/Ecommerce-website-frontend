@@ -1,0 +1,13 @@
+.cart-img{
+    height: 100px;
+    width: 100px;
+}
+.product-bg{
+    background: #eeeeee;
+}
+.heading-border{
+    border-bottom: 3px solid #ca3e47;
+}
+.justify-css{
+    justify-content: space-between;
+}

@@ -1,0 +1,20 @@
+.img-size{
+    height: 500px;
+    width: 500px;
+}
+.heading-border{
+    border-bottom: 4px solid #ca3e47;
+}
+.button-size{
+    width: 500px;
+}
+.flex-display{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 500px){
+    .button-size{
+        width: 100px;
+    }
+}

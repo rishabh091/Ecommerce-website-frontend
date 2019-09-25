@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCartComponent implements OnInit {
 
+  demo=[1];
   name="Apple Iphone X (64gb)";
   quantity=1;
   price=115000;

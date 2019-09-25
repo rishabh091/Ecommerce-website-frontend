@@ -1,31 +1,64 @@
 <app-navbar></app-navbar>
 
-<div class="container border">
-    <div class="d-flex">
-        <img src="../../assets/iphoneX.png" class="img-fluid cart-img m-4">
+<div *ngFor="let i of demo">
+  <div class="container-fluid p-5">
+    <div class="row">
+      <div class="col-sm-2 rounded-circle-custom bg-img p-4 text-center">
+        <img src="../../assets/iphoneX.png" class="img-fluid img-size" />
+      </div>
 
-        <div class="m-4">
-            <!--Product name-->
-            <h4 class="display-5 heading-border mb-2">{{name}}</h4>
-            <!--Price of product-->
-            <div><span class="font-weight-bold">Price : </span>&#x20B9; {{finalprice}}</div>
-            <!--Change Quantity-->
-            <div><span class="font-weight-bold">Quantity : </span>
-                <div class="d-flex mt-2">
-                    <button type="button" class="btn btn-secondary pl-2 pr-2" (click)="decrement()">-</button>
-                    <div class="pl-3 pr-3 pt-2">{{ quantity }}</div>
-                    <button type="button" class="btn btn-secondary pl-2 pr-2" (click)="increment()">+</button>
-                </div>
-            </div>
-        </div>
+      <div class="col-sm-9 p-3 border">
+        <h3 class="display-5 heading-border pb-2">{{ name }}</h3>
+        <h4 class="display-5 mt-3">
+          <span class="font-weight-bold">Price : </span
+          ><span class="text-success ml-4"> &#8377; {{ finalprice }}</span>
+        </h4>
+        <!--Quantity-->
+        <div class="d-flex mt-3">
+          <h4 class="display-5">
+            <span class="font-weight-bold">Quantity : </span>
+          </h4>
 
-        <div class="position-relative ml-auto my-auto text-center m-4">
-            <button type="button" class="btn btn-primary">Remove</button>
+          <button
+            type="button"
+            class="btn btn-warning ml-4"
+            (click)="decrement()"
+          >
+            -
+          </button>
+          <div class="border p-2 pl-4 pr-4">{{ quantity }}</div>
+          <button type="button" class="btn btn-warning" (click)="increment()">
+            +
+          </button>
         </div>
+      </div>
+
+      <div class="col-sm-1 btn-danger position-relative">
+        <div>
+          <i class="material-icons text-light position-absolute icon-position"
+            >close</i
+          >
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<div class="container p-5 d-flex justify-css">
-    <button type="button" class="btn btn-outline-primary" (click)="goToHome()">Buy more of our stuff</button>
-    <button type="button" class="btn btn-outline-success">Procced To Checkout</button>
+<!--Back and procced button-->
+<div class="container-fluid position-fixed custom-pos">
+  <div class="d-flex justify-content-center">
+    <button
+      type="button"
+      class="btn btn-secondary p-2 pl-5 pr-5 rounded-circle-custom shadow"
+      (click)="goToHome()"
+    >
+      Continue Shopping
+    </button>
+    <button
+      type="button"
+      class="btn btn-success p-2 pl-5 pr-5 rounded-circle-custom-reverse shadow"
+    >
+      Procced To Payment
+    </button>
+  </div>
 </div>

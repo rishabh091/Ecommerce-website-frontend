@@ -1,13 +1,26 @@
-.cart-img{
-    height: 100px;
-    width: 100px;
+.img-size{
+    height: 150px;
+    width: 150px;
 }
-.product-bg{
+.bg-img{
     background: #eeeeee;
+}
+.rounded-circle-custom{
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;  
+}
+.rounded-circle-custom-reverse{
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;  
 }
 .heading-border{
     border-bottom: 3px solid #ca3e47;
 }
-.justify-css{
-    justify-content: space-between;
+.icon-position{
+    top: 40%;
+    left: 35%;
+}
+.custom-pos{
+    bottom: 30px;
+    z-index: 2;
 }

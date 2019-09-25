@@ -12,6 +12,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+.btn-edit{
+    border-radius: 1rem;
+}
 
 @media screen and (max-width: 500px){
     .button-size{

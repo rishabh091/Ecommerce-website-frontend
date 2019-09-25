@@ -8,3 +8,16 @@
 .heading-border{
     border-bottom: 3px solid #ca3e47;
 }
+.rounded-corner{
+    border-radius: 1rem;
+}
+.btn-edit{
+    background: white;
+    border-radius: 1rem; 
+    width: 300px;
+    color: #ca3e47;
+}
+.btn-edit:hover{
+    background: #ca3e47;
+    color: white;
+}

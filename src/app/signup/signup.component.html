@@ -11,7 +11,7 @@
       class="img-fluid img-size p-3 border"
     />
     <div class="p-3 border pr-5">
-      <form class="text-center">
+      <form class="text-center" action="sendingData" method="POST">
         <div class="form-group pl-5">
           <input type="text" class="form-control" placeholder="Name" />
           <div class="text-danger pl-5 error-msg">
@@ -47,8 +47,8 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary pl-5 pr-5 mt-2" (click)='sendSignupInfo()'>
-          Login
+        <button type="submit" class="btn btn-primary pl-5 pr-5 mt-2">
+          Sign Up
         </button>
       </form>
     </div>

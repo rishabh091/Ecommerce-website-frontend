@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +12,10 @@ export class SignupComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  sendSignupInfo(){
+    
   }
 
 }

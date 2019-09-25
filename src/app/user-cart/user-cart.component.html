@@ -6,15 +6,15 @@
 
         <div class="m-4">
             <!--Product name-->
-            <h4 class="display-5 heading-border mb-2">Apple Iphone X (64gb)</h4>
+            <h4 class="display-5 heading-border mb-2">{{name}}</h4>
             <!--Price of product-->
-            <div><span class="font-weight-bold">Price : </span>&#x20B9; 1,15,000</div>
+            <div><span class="font-weight-bold">Price : </span>&#x20B9; {{finalprice}}</div>
             <!--Change Quantity-->
             <div><span class="font-weight-bold">Quantity : </span>
                 <div class="d-flex mt-2">
-                    <button type="button" class="btn btn-secondary pl-2 pr-2">+</button>
-                    <div class="pl-3 pr-3 pt-2">1</div>
-                    <button type="button" class="btn btn-secondary pl-2 pr-2">-</button>
+                    <button type="button" class="btn btn-secondary pl-2 pr-2" (click)="decrement()">-</button>
+                    <div class="pl-3 pr-3 pt-2">{{ quantity }}</div>
+                    <button type="button" class="btn btn-secondary pl-2 pr-2" (click)="increment()">+</button>
                 </div>
             </div>
         </div>

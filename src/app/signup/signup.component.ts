@@ -9,13 +9,18 @@ import { HttpParams } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit {
 
+  name;
+  password;
+  email;
+  mobile;
+  address;
   constructor() { }
 
   ngOnInit() {
   }
 
-  sendSignupInfo(){
-    
+  submitData(){
+
   }
 
 }

@@ -1,60 +1,61 @@
-<div class="container-fluid text-right p-3">
+<div class="container-fluid text-right pt-3 pr-3">
   <a href="home"><i class="material-icons text-muted">home</i></a>
 </div>
 
 <div class="container-fluid">
-  <h1 class="display-3 text-center heading-border">The Electronics Store</h1>
+  <h1 class="display-4 text-center heading-border">GeekyStore</h1>
+  <h4 class="display-5 text-center">The market for geeks</h4>
 
-  <div class="d-flex justify-content-center mt-5">
+  <div class="d-flex justify-content-center mt-4">
     <img
-      src="https://image.flaticon.com/icons/svg/186/186239.svg"
-      class="img-fluid img-size p-3 border"
+      src="https://www.wallpaperflare.com/static/199/5/177/apple-devices-artificial-flowers-business-computer-wallpaper.jpg"
+      class="img-fluid img-size border"
     />
     <div class="p-3 border pr-5">
       <form class="text-center" action="sendingData" method="POST">
-        <div class="form-group pl-5">
-          <input type="text" class="form-control" placeholder="Name" />
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Name" id="nameId" />
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
-        <div class="form-group pt-2 pl-5">
-          <input type="password" class="form-control" placeholder="Password" />
+        <div class="form-group pt-2">
+          <input type="password" class="form-control" placeholder="Password" id="passwordId"/>
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
-        <div class="form-group pt-2 pl-5">
-          <input type="email" class="form-control" placeholder="Email" />
+        <div class="form-group pt-2 ">
+          <input type="email" class="form-control" placeholder="Email" id="emailId"/>
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
-        <div class="form-group pt-2 pl-5">
-          <input type="text" class="form-control" placeholder="Mobile" />
+        <div class="form-group pt-2">
+          <input type="text" class="form-control" placeholder="Mobile" id="mobileId"/>
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
-        <div class="form-group pt-2 pl-5">
-          <input type="text" class="form-control" placeholder="Address" />
+        <div class="form-group pt-2">
+          <input type="text" class="form-control" placeholder="Address" id="addressId"/>
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary pl-5 pr-5 mt-2">
+        <button type="submit" class="btn btn-outline-danger rounded form-control mt-2" (submit)="submitData()">
           Sign Up
         </button>
       </form>
     </div>
   </div>
 
-  <div class="text-center container mt-4 pb-5">
+  <div class="text-center container mt-4 pb-2">
     Already signed in?
     <a href="login">Login</a>
   </div>

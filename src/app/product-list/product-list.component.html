@@ -1,25 +1,24 @@
-<div class="m-4 d-flex border">
-  <div class="p-2 text-center product-bg">
-    <img src="../../assets/iphoneX.png" [class]="'img-fluid img-style mt-5'" />
-  </div>
-  <div class="p-4">
-    <a href="/home/{{ name }}/{{ model }}/{{ price }}"
-      ><h4 class="display-5 pb-2 heading-border text-dark">
-        {{ name }}
-      </h4></a
+<div class="card text-center pt-3 mr-5 mb-5 ml-5" style="width:400px">
+  <img
+    class="card-img-top img-style positon-relative m-auto"
+    src="../../assets/iphoneX.png"
+    alt="Product image"
+  />
+  <div class="card-body">
+    <h4 class="card-title heading-border pb-2">
+      <a href="/home/{{ name }}/{{ model }}/{{ price }}" class="text-dark">{{ name }}</a>
+    </h4>
+    <div class="card-text">
+      <p>
+        <span class="font-weight-bold">Model : </span> <span>{{ model }}</span>
+      </p>
+      <p>
+        <span class="font-weight-bold">Price : </span>
+        <span class="text-success">&#8377; {{ price }}</span>
+      </p>
+    </div>
+    <a href="#" class="btn btn-outline-danger rounded-corner"
+      >Add to Cart</a
     >
-    <ul class="text-muted" *ngFor="let i of details">
-      <li>{{ i }}</li>
-    </ul>
-    <div class="pt-2">
-      <span class="font-weight-bold">Model : </span>{{ model }}
-    </div>
-    <div class="pt-2">
-      <span class="font-weight-bold">Price : </span
-      ><span class="text-success">&#x20B9; {{ price }}</span>
-    </div>
-    <button class="btn btn-outline-danger btn-edit mt-4">
-      Add to cart
-    </button>
   </div>
 </div>

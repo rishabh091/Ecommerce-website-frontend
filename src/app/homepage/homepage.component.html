@@ -1,32 +1,167 @@
 <app-navbar></app-navbar>
 
-<div class="container-fluid mt-3">
+<!--Secondary navbar-->
+<div class="container-fluid navbar-color-secondary sticky-top mb-4">
+  <div class="d-flex pt-2 justify-content-center">
+    <div class="pr-5 d-flex">
+      <img
+        src="https://image.flaticon.com/icons/svg/235/235265.svg"
+        class="img-fluid navbar-image"
+      />
+      <p class="text-center pl-2 pt-1">
+        <button
+          type="button"
+          class="text-light btn pl-0 pt-0"
+          (click)="filter('laptops')"
+        >
+          Laptops
+        </button>
+      </p>
+    </div>
+
+    <div class="pr-5 d-flex">
+      <img
+        src="https://image.flaticon.com/icons/svg/201/201574.svg"
+        class="img-fluid navbar-image"
+      />
+      <p class="text-center pl-2 pt-1">
+        <button
+          type="button"
+          class="text-light btn pl-0 pt-0"
+          (click)="filter('mobiles')"
+        >
+          Mobiles
+        </button>
+      </p>
+    </div>
+
+    <div class="pr-5 d-flex">
+      <img
+        src="https://image.flaticon.com/icons/svg/125/125271.svg"
+        class="img-fluid navbar-image"
+      />
+      <p class="text-center pl-2 pt-1">
+        <button
+          type="button"
+          class="text-light btn pl-0 pt-0"
+          (click)="filter('tablets')"
+        >
+          Tablets
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm-2 border">
-      <div class="position-fixed">
+      <div class="sticky-top">
         <div class="text-center pt-4 ">
-          <h4 class="display-5">FILTERS</h4>
+          <h4 class="display-5 text-danger">FILTERS</h4>
           <hr />
         </div>
 
-        <div class="border pt-2 pb-2">
+        <div class="border pt-2 pb-2 pl-4">
           <h5 class="display-5 text-center">Price filter :</h5>
-          <div *ngFor="let i of priceFilter" class="pl-5 pr-4">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="" />
-                {{ i }}
-              </label>
-            </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="filter" (click)="priceFilter(0,10000)"/>0
+              - 10,000
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="filter" (click)="priceFilter(10000,20000)"/>10,000
+              - 20,000
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="filter"
+                (click)="priceFilter(20000,30000)"
+              />20,000 - 30,000
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="filter"
+                (click)="priceFilter(30000,40000)"
+              />30,000 - 40,000
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="filter"
+                (click)="priceFilter(40000,50000)"
+              />40,000 - 50,000
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="filter"
+                (click)="priceFilter(50000,5000000)"
+              />50,000 - above
+            </label>
           </div>
         </div>
       </div>
     </div>
 
     <!--Products-->
-    <div class="col-sm-10 d-flex flex-wrap">
-      <div *ngFor="let i of myArray">
-        <app-product-list></app-product-list>
+    <div class="col-sm-10">
+
+      <div *ngIf="checkCategorySelected()" class="container text-center mb-4">
+        <div class="text-muted">Our exiting range of</div>
+        <h3 class="display-4 text-danger text-uppercase">{{categorySelected}}</h3>
+      </div>
+
+      <div class="container-fluid">
+        <div class="container-fluid d-flex flex-wrap">
+          <div *ngFor="let i of myArray; let ind = index">
+            <div class="card text-center pt-3 mr-3 mb-5 ml-5 pl-5 pr-5 shadow">
+              <img
+                class="card-img-top img-style positon-relative m-auto"
+                alt="Product image"
+                [src]="i.imgUrl"
+              />
+              <div class="card-body">
+                <h4 class="card-title heading-border pb-2">
+                  <a href="/home/{{ i.id }}" class="text-dark">{{ i.name }}</a>
+                </h4>
+                <div class="card-text">
+                  <p>
+                    <span class="font-weight-bold">Model : </span>
+                    <span>{{ i.model }}</span>
+                  </p>
+                  <p>
+                    <span class="font-weight-bold">Price : </span>
+                    <span class="text-success">&#8377; {{ i.price }}</span>
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger rounded-corner"
+                  [disabled]="!i.inStock"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

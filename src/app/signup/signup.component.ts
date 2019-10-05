@@ -23,9 +23,7 @@ export class SignupComponent implements OnInit {
   }
 
   submitData(){
-    this.httpClient.get(this.url).subscribe((res)=>{
-      console.log(res);
-    });
+    
   }
 
 }

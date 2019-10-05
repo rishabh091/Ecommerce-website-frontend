@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-cart',
@@ -13,9 +15,12 @@ export class UserCartComponent implements OnInit {
   price=115000;
   finalprice=this.price;
 
-  constructor() { }
+  constructor(private service : AppService, private router : Router) { }
 
   ngOnInit() {
+    if(!this.service.checkLogin()){
+      this.router.navigate(['/home']);
+    }
   }
 
   goToHome(){

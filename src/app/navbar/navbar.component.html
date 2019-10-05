@@ -27,14 +27,24 @@
     </form>
 
     <ul class="navbar-nav position-relative ml-auto">
-      <li class="nav-item p-2 rounded-border">
+      <li *ngIf="!checkLogin()" class="nav-item p-2 rounded-border">
         <a class="nav-link text-light" href="signup">Sign Up</a>
       </li>
       <li class="nav-item p-2 rounded-border">
-        <a class="nav-link text-light" href="login">Login</a>
+        <a *ngIf="!checkLogin()" class="nav-link text-light" href="login"
+          >Login</a
+        >
       </li>
-      <li class="nav-item p-2 rounded-border">
+      <li *ngIf="checkLogin()" class="nav-item p-2 rounded-border">
         <a class="nav-link text-light" href="cart">My Cart</a>
+      </li>
+      <li *ngIf="checkLogin()" class="nav-item p-2 rounded-border">
+        <button
+          class="nav-link btn btn-outline-danger text-light"
+          (click)="logout()"
+        >
+          Logout
+        </button>
       </li>
     </ul>
   </div>

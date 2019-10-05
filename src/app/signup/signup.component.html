@@ -12,43 +12,82 @@
       class="img-fluid img-size border"
     />
     <div class="p-3 border pr-5">
-      <form class="text-center" method="POST">
+      <form class="text-center">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Name" id="nameId" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            id="nameId"
+            [(ngModel)]="name"
+            [ngModelOptions]="{ standalone: true }"
+          />
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
         <div class="form-group pt-2">
-          <input type="password" class="form-control" placeholder="Password" id="passwordId"/>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            id="passwordId"
+            [(ngModel)]="password"
+            [ngModelOptions]="{ standalone: true }"
+          />
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
         <div class="form-group pt-2 ">
-          <input type="email" class="form-control" placeholder="Email" id="emailId"/>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            id="emailId"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+          />
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
         <div class="form-group pt-2">
-          <input type="text" class="form-control" placeholder="Mobile" id="mobileId"/>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Mobile"
+            id="mobileId"
+            [(ngModel)]="mobile"
+            [ngModelOptions]="{ standalone: true }"
+          />
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
         <div class="form-group pt-2">
-          <input type="text" class="form-control" placeholder="Address" id="addressId"/>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Address"
+            id="addressId"
+            [(ngModel)]="address"
+            [ngModelOptions]="{ standalone: true }"
+          />
           <div class="text-danger pl-5 error-msg">
             Every field is required.
           </div>
         </div>
 
-        <button type="submit" class="btn btn-outline-danger rounded form-control mt-2" (submit)="submitData()">
+        <button
+          type="button"
+          class="btn btn-outline-danger rounded form-control mt-2"
+          (click)="submitData()"
+        >
           Sign Up
         </button>
       </form>

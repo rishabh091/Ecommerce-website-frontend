@@ -12,7 +12,12 @@ export class AppService {
   }
 
   checkLogin(){
-    const auth=sessionStorage.getItem('auth');
-    return JSON.parse(auth);
+    const auth=sessionStorage.getItem('token');
+    if(auth){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }

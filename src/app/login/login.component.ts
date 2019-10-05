@@ -22,16 +22,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+
     this.authService.authenticate(this.username,this.password).subscribe(
       data=>{
         this.service.isLoggedIn(true);
         this.router.navigate(['home']);
       }
     );
-  }
-
-  logout(){
-    this.service.isLoggedIn(false);
   }
 
   showPasswordFunction(){

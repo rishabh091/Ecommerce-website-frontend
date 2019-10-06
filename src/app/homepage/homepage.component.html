@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <!--Secondary navbar-->
-<div class="container-fluid navbar-color-secondary sticky-top mb-4">
+<div class="container-fluid navbar-color-secondary sticky-top">
   <div class="d-flex pt-2 justify-content-center">
     <div class="pr-5 d-flex">
       <img
@@ -53,17 +53,93 @@
   </div>
 </div>
 
-<div *ngIf="email != ''" class="container-fluid text-center mb-3">
-  <h4 class="display-5">
-    <span class="cursive-font heading-border">Welcome  </span>
-    <span class="text-success cursive-font heading-border">{{ email }}</span>
-  </h4>
-  <div class="text-muted mt-4 mb-5">Enjoy through our wide variety of tech devices and select what you desire.</div>
+<!--carousel-->
+<div *ngIf="categorySelected == ''" class="container-fluid mb-2 mt-2">
+  <div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="https://rukminim1.flixcart.com/flap/5000/5000/image/62b25e7339ffd977.jpg?q=50"
+          class="carousel-img-size"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://rukminim1.flixcart.com/flap/5000/5000/image/2b89c50d90584a21.jpg?q=50"
+          class="carousel-img-size"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://rukminim1.flixcart.com/flap/5000/5000/image/8c92656d681e0de3.jpg?q=50"
+          class="carousel-img-size"
+        />
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
+<!--user welcome-->
+<div
+  *ngIf="email != ''"
+  class="container-fluid text-center bg-lightbackground pt-3 pb-1"
+>
+  <h4 class="display-5">
+    <span class="cursive-font heading-border">Welcome </span>
+    <span class="text-success cursive-font heading-border">{{ email }}</span>
+  </h4>
+  <div class="text-muted mt-4 mb-5">
+    Enjoy through our wide variety of tech devices and select what you desire.
+  </div>
+</div>
 
+<!--homepage preview-->
+<div *ngIf="categorySelected == ''" class="container-fluid mt-3 p-4 mb-4 mt-4">
+  <div class="d-flex mb-2 ml-3">
+    <h2 class="display-6 heading-border">
+      <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
+      ><span class="text-success">Mobiles</span>
+    </h2>
+  </div>
+  <app-preview [category]="mobiles"></app-preview>
+</div>
+<div *ngIf="categorySelected == ''" class="container-fluid mt-3 p-4 mb-4 mt-4">
+  <div class="d-flex mb-2 ml-3">
+    <h2 class="display-6 heading-border">
+      <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
+      ><span class="text-success">Laptops</span>
+    </h2>
+  </div>
+  <app-preview [category]="laptops"></app-preview>
+</div>
+<div *ngIf="categorySelected == ''" class="container-fluid mt-3 p-4 mb-4 mt-4">
+  <div class="d-flex mb-2 ml-3">
+    <h2 class="display-6 heading-border">
+      <span class="text-muted" style="font-size: 1.5rem;">Top picks for</span
+      ><span class="text-success">Tablets</span>
+    </h2>
+  </div>
+  <app-preview [category]="tablets"></app-preview>
+</div>
+
+<div *ngIf="checkCategorySelected()" class="container-fluid">
+  <div class="row">
     <!--filters-->
     <div class="col-sm-2 border">
       <div class="sticky-top">
@@ -140,14 +216,14 @@
 
     <!--Products-->
     <div class="col-sm-10">
-      <div *ngIf="checkCategorySelected()" class="container text-center mb-4">
+      <div class="container text-center mb-4 mt-3">
         <div class="text-muted">Our exciting range of</div>
         <h3 class="display-4 text-danger text-uppercase">
           {{ categorySelected }}
         </h3>
       </div>
 
-      <div class="container-fluid">
+      <div *ngIf="checkCategorySelected()" class="container-fluid">
         <div class="container-fluid d-flex flex-wrap">
           <div *ngFor="let i of myArray; let ind = index">
             <div class="card text-center pt-3 mr-3 mb-5 ml-5 pl-5 pr-5 shadow">

@@ -12,23 +12,16 @@ export class HomepageComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
   myArray;
 
-  url = "http://localhost:10083/home";
-
-  id;
-  name;
-  details = [];
-  model;
-  price;
-  inStock;
-  imgSrc;
-
   email;
+
+  mobiles="mobiles";
+  laptops="laptops";
+  tablets="tablets";
 
   categorySelected="";
 
   ngOnInit() {
     this.getNameFromSessionStorage();
-    this.ajaxCall(this.url);
     this.checkSessionStorage();
   }
 
@@ -45,7 +38,6 @@ export class HomepageComponent implements OnInit {
 
   ajaxCall(url){
     this.httpClient.get(url).subscribe(res => {
-      console.log(res);
       this.myArray = res;
     }); 
   }
@@ -81,7 +73,7 @@ export class HomepageComponent implements OnInit {
   }
 
   priceFilter(price1,price2){
-    let url="http://localhost:10083/home/priceFilter/";
+    let url="http://localhost:10083/home/category/"+this.categorySelected+"/priceFilter/";
     this.email="";
     url=url+price1+"/"+price2;
 

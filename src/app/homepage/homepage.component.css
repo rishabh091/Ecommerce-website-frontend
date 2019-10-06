@@ -57,3 +57,10 @@
 .navbar-color-secondary{
     background: #414141;
 }
+.carousel-img-size{
+    height: 100%;
+    width: 100%;
+}
+.bg-lightbackground{
+    background: #f9f9f9;
+}

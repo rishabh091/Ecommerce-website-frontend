@@ -9,10 +9,12 @@ import { AppService } from '../app.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username;
+  email;
   password;
 
   showPassword="password";
+  validateUser=true;
+
   constructor(private service: AppService, private router: Router,private authService: AuthenticationService) { }
 
   ngOnInit() {
@@ -22,13 +24,25 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    if(this.email==undefined || this.password==undefined){
+      this.validateUser=false;
+    }
+    else{
+      this.validateUser=true;
+    }
+    if(this.validateUser){
+      sessionStorage.setItem("email",this.email);
 
-    this.authService.authenticate(this.username,this.password).subscribe(
-      data=>{
-        this.service.isLoggedIn(true);
-        this.router.navigate(['home']);
-      }
-    );
+      this.authService.authenticate(this.email,this.password).subscribe(
+        data=>{
+          this.service.isLoggedIn(true);
+          this.router.navigate(['home']);
+        },error=>{
+          this.validateUser=false;
+        }
+        
+      );
+    }
   }
 
   showPasswordFunction(){

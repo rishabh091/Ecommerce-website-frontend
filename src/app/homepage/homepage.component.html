@@ -53,8 +53,18 @@
   </div>
 </div>
 
+<div *ngIf="email != ''" class="container-fluid text-center mb-3">
+  <h4 class="display-5">
+    <span class="cursive-font heading-border">Welcome  </span>
+    <span class="text-success cursive-font heading-border">{{ email }}</span>
+  </h4>
+  <div class="text-muted mt-4 mb-5">Enjoy through our wide variety of tech devices and select what you desire.</div>
+</div>
+
 <div class="container-fluid">
   <div class="row">
+
+    <!--filters-->
     <div class="col-sm-2 border">
       <div class="sticky-top">
         <div class="text-center pt-4 ">
@@ -66,14 +76,12 @@
           <h5 class="display-5 text-center">Price filter :</h5>
           <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="filter" (click)="priceFilter(0,10000)"/>0
-              - 10,000
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="filter" (click)="priceFilter(10000,20000)"/>10,000
-              - 20,000
+              <input
+                type="radio"
+                class="form-check-input"
+                name="filter"
+                (click)="priceFilter(0, 10000)"
+              />0 - 10,000
             </label>
           </div>
           <div class="form-check-inline">
@@ -82,7 +90,17 @@
                 type="radio"
                 class="form-check-input"
                 name="filter"
-                (click)="priceFilter(20000,30000)"
+                (click)="priceFilter(10000, 20000)"
+              />10,000 - 20,000
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="filter"
+                (click)="priceFilter(20000, 30000)"
               />20,000 - 30,000
             </label>
           </div>
@@ -92,7 +110,7 @@
                 type="radio"
                 class="form-check-input"
                 name="filter"
-                (click)="priceFilter(30000,40000)"
+                (click)="priceFilter(30000, 40000)"
               />30,000 - 40,000
             </label>
           </div>
@@ -102,7 +120,7 @@
                 type="radio"
                 class="form-check-input"
                 name="filter"
-                (click)="priceFilter(40000,50000)"
+                (click)="priceFilter(40000, 50000)"
               />40,000 - 50,000
             </label>
           </div>
@@ -112,7 +130,7 @@
                 type="radio"
                 class="form-check-input"
                 name="filter"
-                (click)="priceFilter(50000,5000000)"
+                (click)="priceFilter(50000, 5000000)"
               />50,000 - above
             </label>
           </div>
@@ -122,10 +140,11 @@
 
     <!--Products-->
     <div class="col-sm-10">
-
       <div *ngIf="checkCategorySelected()" class="container text-center mb-4">
-        <div class="text-muted">Our exiting range of</div>
-        <h3 class="display-4 text-danger text-uppercase">{{categorySelected}}</h3>
+        <div class="text-muted">Our exciting range of</div>
+        <h3 class="display-4 text-danger text-uppercase">
+          {{ categorySelected }}
+        </h3>
       </div>
 
       <div class="container-fluid">

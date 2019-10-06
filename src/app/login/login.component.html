@@ -2,6 +2,14 @@
   <a href="home"><i class="material-icons text-muted">home</i></a>
 </div>
 
+<div
+  *ngIf="!validateUser"
+  class="container-fluid alert alert-danger alert-dismissible fade show text-center"
+>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Username or password can't be recognized</strong>
+</div>
+
 <div class="container-fluid">
   <h1 class="display-3 text-center heading-border">GeekyStore</h1>
   <h4 class="display-5 text-center">The market for geeks</h4>
@@ -23,14 +31,11 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Username"
+              placeholder="Email"
 
-              [(ngModel)]="username"
+              [(ngModel)]="email"
               [ngModelOptions]="{standalone: true}"
             />
-          </div>
-          <div class="text-danger pl-5 error-msg">
-            Username or password can't be recognised.
           </div>
         </div>
 
@@ -49,9 +54,6 @@
               [(ngModel)]="password"
               [ngModelOptions]="{standalone: true}"
             />
-          </div>
-          <div class="text-danger pl-5 error-msg">
-            Username or password can't be recognised.
           </div>
         </div>
 

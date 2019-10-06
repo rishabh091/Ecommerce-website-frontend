@@ -12,6 +12,7 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class NavbarComponent implements OnInit {
 
+  logoutUrl="http://localhost:10083/login/logout";
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient,private service: AppService,private authService: AuthenticationService) { }
 
@@ -21,6 +22,13 @@ export class NavbarComponent implements OnInit {
   logout(){
     if(this.service.checkLogin()){
       this.authService.logoutService();
+
+      sessionStorage.setItem("email","");
+      location.reload();
+
+      this.httpClient.get(this.logoutUrl).subscribe(res=>{
+      });
+
       this.router.navigate(['/home']);
     }
   }

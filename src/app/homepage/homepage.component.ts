@@ -22,10 +22,25 @@ export class HomepageComponent implements OnInit {
   inStock;
   imgSrc;
 
+  email;
+
   categorySelected="";
 
   ngOnInit() {
+    this.getNameFromSessionStorage();
     this.ajaxCall(this.url);
+    this.checkSessionStorage();
+  }
+
+  getNameFromSessionStorage(){
+    let rawEmail=sessionStorage.getItem("email").split("@");
+    this.email=rawEmail[0];
+  }
+
+  checkSessionStorage(){
+    if(sessionStorage.getItem("email")==""){
+      this.email="";
+    }
   }
 
   ajaxCall(url){
@@ -46,6 +61,7 @@ export class HomepageComponent implements OnInit {
 
   filter(category){
     let url="http://localhost:10083/home/category/";
+    this.email="";
 
     if(category=="mobiles"){
       this.categorySelected=category;
@@ -66,6 +82,7 @@ export class HomepageComponent implements OnInit {
 
   priceFilter(price1,price2){
     let url="http://localhost:10083/home/priceFilter/";
+    this.email="";
     url=url+price1+"/"+price2;
 
     this.ajaxCall(url);

@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PreviewComponent } from './preview/preview.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PreviewComponent } from './preview/preview.component';
     ProductDetailsComponent,
     LoginComponent,
     UserCartComponent,
-    PreviewComponent
+    PreviewComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,

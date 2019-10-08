@@ -97,12 +97,14 @@
 
 <!--user welcome-->
 <div
-  *ngIf="email != ''"
+  *ngIf="username != '' && !checkCategorySelected()"
   class="container-fluid text-center bg-lightbackground pt-3 pb-1"
 >
   <h4 class="display-5">
     <span class="cursive-font heading-border">Welcome </span>
-    <span class="text-success cursive-font heading-border">{{ email }}</span>
+    <span class="text-success cursive-font heading-border text-capitalize">{{
+      username
+    }}</span>
   </h4>
   <div class="text-muted mt-4 mb-5">
     Enjoy through our wide variety of tech devices and select what you desire.
@@ -110,7 +112,10 @@
 </div>
 
 <!--homepage preview-->
-<div *ngIf="categorySelected == ''" class="container-fluid mt-3 p-4 mb-4 mt-4">
+<div
+  *ngIf="!checkCategorySelected()"
+  class="container-fluid mt-3 p-4 mb-4 mt-4"
+>
   <div class="d-flex mb-2 ml-3">
     <h2 class="display-6 heading-border">
       <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
@@ -119,7 +124,11 @@
   </div>
   <app-preview [category]="mobiles"></app-preview>
 </div>
-<div *ngIf="categorySelected == ''" class="container-fluid mt-3 p-4 mb-4 mt-4">
+
+<div
+  *ngIf="!checkCategorySelected()"
+  class="container-fluid mt-3 p-4 mb-4 mt-4"
+>
   <div class="d-flex mb-2 ml-3">
     <h2 class="display-6 heading-border">
       <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
@@ -128,7 +137,11 @@
   </div>
   <app-preview [category]="laptops"></app-preview>
 </div>
-<div *ngIf="categorySelected == ''" class="container-fluid mt-3 p-4 mb-4 mt-4">
+
+<div
+  *ngIf="!checkCategorySelected()"
+  class="container-fluid mt-3 p-4 mb-4 mt-4"
+>
   <div class="d-flex mb-2 ml-3">
     <h2 class="display-6 heading-border">
       <span class="text-muted" style="font-size: 1.5rem;">Top picks for</span
@@ -136,6 +149,43 @@
     </h2>
   </div>
   <app-preview [category]="tablets"></app-preview>
+</div>
+
+<!--card columns-->
+<div *ngIf="!checkCategorySelected()" class="container-fluid mt-5 mb-5">
+  <div class="container-fluid d-flex justify-content-center mb-5">
+    <h3 class="display-5 heading-border">Why prefer us?</h3>
+  </div>
+
+  <div class="card-columns">
+    <div class="card bg-lightbackground">
+      <div class="card-body text-center">
+        <img
+          src="https://image.flaticon.com/icons/svg/609/609361.svg"
+          class="img-fluid column-icon mb-3"
+        />
+        <p class="card-text">One day delivery</p>
+      </div>
+    </div>
+    <div class="card bg-lightbackground">
+      <div class="card-body text-center">
+        <img
+          src="https://image.flaticon.com/icons/svg/845/845823.svg"
+          class="img-fluid column-icon mb-3"
+        />
+        <p class="card-text">Best bang for the buck</p>
+      </div>
+    </div>
+    <div class="card bg-lightbackground">
+      <div class="card-body text-center">
+        <img
+          src="https://image.flaticon.com/icons/svg/138/138215.svg"
+          class="img-fluid column-icon mb-3"
+        />
+        <p class="card-text">Easy returns.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="checkCategorySelected()" class="container-fluid">

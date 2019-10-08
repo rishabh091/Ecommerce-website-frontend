@@ -47,7 +47,6 @@ export class ProductDetailsComponent implements OnInit {
       this.imgSrc = this.myArray.imgUrl;
 
       this.detailsArr=this.details.split("\n");
-      this.detailsArr.shift();
       console.log(this.detailsArr);
     });
   }

@@ -1,0 +1,186 @@
+<div class="container-fluid m-5">
+  <div class="d-flex">
+    <h1 class="display-4 heading-border">Personal Information</h1>
+  </div>
+
+  <div class="text-muted mt-4">
+    Hello,
+    <span class="font-size text-capitalize text-success">{{ name }}</span>
+
+    <p *ngIf="!isSeller">
+      It's nice you choose us for your shopping experience, we will try our best
+      we gave you the best experience you ever had. Cheers !!
+    </p>
+    <p *ngIf="isSeller">
+      Hey !! Thank you for choosing our platform for further advancement of your
+      online business, we will help in every way possible to get you more income
+      and customers. REGARDS - <i>GeekyStore.</i>
+    </p>
+  </div>
+
+  <div class="text-muted mt-4">
+    <span>Email : </span>
+    <div class="font-size text-success">{{ email }}</div>
+  </div>
+
+  <div class="text-muted mt-4">
+    <span>Mobile : </span>
+    <div class="font-size text-success">{{ mobile }}</div>
+  </div>
+
+  <div class="text-muted mt-4">
+    <span>Address : </span>
+    <div class="font-size text-success">{{ address }}</div>
+  </div>
+
+  <div *ngIf="isSeller" class="mt-4">
+    <button
+      type="button"
+      class="btn btn-outline-danger rounded-border"
+      data-toggle="modal"
+      data-target="#myModal"
+    >
+      Add Product
+    </button>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add your product</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div
+          *ngIf="error"
+          class="alert alert-danger alert-dismissible fade show"
+        >
+          <button type="button" class="close" data-dismiss="alert">
+            &times;
+          </button>
+          <strong
+            >Enter all the Information correctly. Fields cannot be left
+            empty.</strong
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name : </label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="productName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="brand">Brand : </label>
+          <input
+            type="text"
+            class="form-control"
+            id="brand"
+            [(ngModel)]="brand"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price : </label>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            [(ngModel)]="price"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="details">Details : </label>
+          <textarea
+            type="text"
+            rows="5"
+            class="form-control"
+            id="details"
+            maxlength="255"
+            [(ngModel)]="details"
+            [ngModelOptions]="{ standalone: true }"
+          ></textarea>
+          <div class="text-muted">
+            Make sure details are less than 255 letters.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="model">Model : </label>
+          <input
+            type="text"
+            class="form-control"
+            id="model"
+            [(ngModel)]="model"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="imgUrl">Image Url : </label>
+          <input
+            type="text"
+            class="form-control"
+            id="imgUrl"
+            [(ngModel)]="productImage"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category : </label>
+          <select
+            class="form-control"
+            id="category"
+            [(ngModel)]="category"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <option>Mobiles</option>
+            <option>Laptops</option>
+            <option>Tablets</option>
+          </select>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="customCheck"
+            [(ngModel)]="stock"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <label class="custom-control-label" for="customCheck"
+            >In stock?</label
+          >
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger rounded-border"
+          (click)="sendData()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

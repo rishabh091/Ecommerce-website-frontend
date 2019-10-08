@@ -39,6 +39,9 @@
         <a class="nav-link text-light" href="cart">My Cart</a>
       </li>
       <li *ngIf="checkLogin()" class="nav-item p-2 rounded-border">
+        <a class="nav-link text-light" href="userInfo">My Profile</a>
+      </li>
+      <li *ngIf="checkLogin()" class="nav-item p-2 rounded-border">
         <button
           class="nav-link btn btn-outline-danger text-light"
           (click)="logout()"

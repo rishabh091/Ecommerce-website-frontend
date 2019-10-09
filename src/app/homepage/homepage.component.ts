@@ -22,11 +22,10 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.getUserInfo();
-    this.checkSessionStorage();
   }
 
   getUserInfo() {
-    if (sessionStorage.getItem("email") != "") {
+    if (sessionStorage.getItem("email") != "" && sessionStorage.getItem("email")!=null) {
       let email = sessionStorage.getItem("email");
       let temp = email.split("@");
       let emailName = temp[0];
@@ -35,17 +34,11 @@ export class HomepageComponent implements OnInit {
 
       this.httpClient
         .get(this.userUrl + emailName + "/" + emailId + "/" + domain)
-        .subscribe(res => {
+        .subscribe((res : Object)=> {
           console.log(Object.keys(res));
 
           this.username = res.name;
         });
-    }
-  }
-
-  checkSessionStorage() {
-    if (sessionStorage.length == 0) {
-      this.email = "";
     }
   }
 

@@ -48,7 +48,7 @@ export class UserinfoComponent implements OnInit {
 
     this.httpClient
       .get(this.url + emailName + "/" + emailId + "/" + domain)
-      .subscribe(res => {
+      .subscribe((res : Object)=> {
         console.log(Object.keys(res));
 
         this.name = res.name;

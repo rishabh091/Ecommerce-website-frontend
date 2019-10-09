@@ -300,6 +300,7 @@
                   type="button"
                   class="btn btn-outline-danger rounded-corner"
                   [disabled]="!i.inStock"
+                  (click)="addToCart(i.id)"
                 >
                   Add to Cart
                 </button>

@@ -24,11 +24,12 @@ export class NavbarComponent implements OnInit {
       this.authService.logoutService();
 
       sessionStorage.setItem("email","");
-      location.reload();
 
       this.httpClient.get(this.logoutUrl).subscribe(res=>{
+        console.log(JSON.stringify(res));
       });
 
+      location.reload();
       this.router.navigate(['/home']);
     }
   }

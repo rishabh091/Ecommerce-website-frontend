@@ -13,6 +13,7 @@ export class HomepageComponent implements OnInit {
   username = "";
 
   userUrl = "http://localhost:10083/login/userInfo/";
+  addToCartUrl="http://localhost:10083/cart/addItem/productId/";
 
   mobiles = "mobiles";
   laptops = "laptops";
@@ -86,5 +87,13 @@ export class HomepageComponent implements OnInit {
     url = url + price1 + "/" + price2;
 
     this.ajaxCall(url);
+  }
+
+  addToCart(id){
+    this.httpClient.get(this.addToCartUrl+id).subscribe(res=>{
+      alert("Added to cart sucessfully");
+    },error=>{
+      alert("Can't add to cart");
+    });
   }
 }

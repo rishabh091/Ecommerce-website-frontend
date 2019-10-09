@@ -1,17 +1,17 @@
 <app-navbar></app-navbar>
 
-<div *ngFor="let i of demo">
+<div *ngFor="let i of cartArray">
   <div class="container-fluid p-5">
     <div class="row">
-      <div class="col-sm-2 rounded-circle-custom bg-img p-4 text-center">
-        <img src="../../assets/iphoneX.png" class="img-fluid img-size" />
+      <div class="col-sm-2 border p-4 text-center">
+        <img [src]="i.products.imgUrl" class="img-fluid img-size" />
       </div>
 
       <div class="col-sm-9 p-3 border">
-        <h3 class="display-5 heading-border pb-2">{{ name }}</h3>
+        <a href="/home/{{i.products.id}}"><h3 class="display-5 heading-border pb-2">{{ i.products.name }}</h3></a>
         <h4 class="display-5 mt-3">
           <span class="font-weight-bold">Price : </span
-          ><span class="text-success ml-4"> &#8377; {{ finalprice }}</span>
+          ><span class="text-success ml-4"> &#8377; {{ i.products.price }}</span>
         </h4>
         <!--Quantity-->
         <div class="d-flex mt-3">
@@ -22,18 +22,18 @@
           <button
             type="button"
             class="btn btn-warning ml-4"
-            (click)="decrement()"
+            (click)="decrement(i.products.id)"
           >
             -
           </button>
-          <div class="border p-2 pl-4 pr-4">{{ quantity }}</div>
-          <button type="button" class="btn btn-warning" (click)="increment()">
+          <div class="border p-2 pl-4 pr-4">{{ i.quantity }}</div>
+          <button type="button" class="btn btn-warning" (click)="increment(i.products.id)">
             +
           </button>
         </div>
       </div>
 
-      <div class="col-sm-1 btn-danger position-relative">
+      <div class="col-sm-1 btn-danger position-relative" (click)="removeItem(i.products.id)">
         <div>
           <i class="material-icons text-light position-absolute icon-position"
             >close</i

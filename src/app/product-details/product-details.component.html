@@ -18,7 +18,8 @@
     </h5>
 
     <div>
-      <button type="button" class="btn btn-outline-danger btn-edit m-4 button-size" [disabled]="!inStock">
+      <button type="button" class="btn btn-outline-danger btn-edit m-4 button-size" [disabled]="!inStock"
+      (click)="addToCart()">
         Add to Cart
       </button>
     </div>

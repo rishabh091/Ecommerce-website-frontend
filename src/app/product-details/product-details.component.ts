@@ -19,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   detailsArr=[];
 
   url = "http://localhost:10083/home/id/";
+  addToCartUrl="http://localhost:10083/cart/addItem/productId/";
   myArray;
 
   constructor(
@@ -48,6 +49,14 @@ export class ProductDetailsComponent implements OnInit {
 
       this.detailsArr=this.details.split("\n");
       console.log(this.detailsArr);
+    });
+  }
+
+  addToCart(){
+    this.httpClient.get(this.addToCartUrl+this.id).subscribe(res=>{
+      alert("Added to cart sucessfully");
+    },error=>{
+      alert("Can't add to cart");
     });
   }
 }

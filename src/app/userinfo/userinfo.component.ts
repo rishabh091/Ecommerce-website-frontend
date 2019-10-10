@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { AppService } from '../app.service';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AppService } from "../app.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-userinfo",
@@ -13,7 +13,10 @@ export class UserinfoComponent implements OnInit {
   email;
   address;
   mobile;
-  isSeller:Boolean;
+  isSeller: Boolean;
+
+  //for history
+  historyArray;
 
   productName;
   price;
@@ -22,14 +25,18 @@ export class UserinfoComponent implements OnInit {
   model;
   productImage;
   category;
-  stock=false;
+  stock = false;
 
-  error=false;
+  error = false;
 
   url = "http://localhost:10083/login/userInfo/";
   addProductUrl = "http://localhost:10083/addProduct";
 
-  constructor(private httpClient: HttpClient,private service: AppService,private router: Router) {}
+  constructor(
+    private httpClient: HttpClient,
+    private service: AppService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     if (!this.service.checkLogin()) {
@@ -37,6 +44,17 @@ export class UserinfoComponent implements OnInit {
     }
 
     this.getUserInfo();
+    this.getOrderHistory();
+  }
+
+  getOrderHistory() {
+    const token = sessionStorage.getItem("token");
+    const headers = new HttpHeaders({ Authorization: " Basic " + token });
+
+    let url="http://localhost:10083/order/orderHistory";
+    this.httpClient.get(url,{headers}).subscribe(res=>{
+      this.historyArray=res;
+    });
   }
 
   getUserInfo() {
@@ -48,26 +66,30 @@ export class UserinfoComponent implements OnInit {
 
     this.httpClient
       .get(this.url + emailName + "/" + emailId + "/" + domain)
-      .subscribe((res : Object)=> {
+      .subscribe((res: Object) => {
         console.log(Object.keys(res));
 
         this.name = res.name;
         this.email = res.email;
         this.address = res.address;
         this.mobile = res.mobile;
-        this.isSeller=res.seller;
+        this.isSeller = res.seller;
       });
   }
 
-  sendData(){
-    if(this.productName!=undefined && this.productImage!=undefined && 
-    this.price!=undefined && this.details!=undefined && this.model!=undefined && this.category!=undefined
-    && this.stock!=undefined){
-      
-
-      let product={
-        name : this.productName,
-        price : this.price,
+  sendData() {
+    if (
+      this.productName != undefined &&
+      this.productImage != undefined &&
+      this.price != undefined &&
+      this.details != undefined &&
+      this.model != undefined &&
+      this.category != undefined &&
+      this.stock != undefined
+    ) {
+      var product = {
+        name: this.productName,
+        price: this.price,
         details: this.details,
         model: this.model,
         imgUrl: this.productImage,
@@ -76,13 +98,16 @@ export class UserinfoComponent implements OnInit {
         brand: this.brand
       };
 
-      this.httpClient.post(this.addProductUrl,product).subscribe(res=>{
-        alert(JSON.stringify(res));
-      });
+      const token = sessionStorage.getItem("token");
+      const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    }
-    else{
-      this.error=true;
+      this.httpClient
+        .post(this.addProductUrl, product, { headers })
+        .subscribe(res => {
+          alert(JSON.stringify(res));
+        });
+    } else {
+      this.error = true;
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "app-product-details",
@@ -53,7 +53,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(){
-    this.httpClient.get(this.addToCartUrl+this.id).subscribe(res=>{
+    const token = sessionStorage.getItem('token');
+    const headers=new HttpHeaders({Authorization: ' Basic '+token});
+    
+    this.httpClient.get(this.addToCartUrl+this.id,{headers}).subscribe(res=>{
       alert("Added to cart sucessfully");
     },error=>{
       alert("Can't add to cart");

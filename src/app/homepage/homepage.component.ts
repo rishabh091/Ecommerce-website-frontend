@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "app-homepage",
@@ -90,7 +90,10 @@ export class HomepageComponent implements OnInit {
   }
 
   addToCart(id){
-    this.httpClient.get(this.addToCartUrl+id).subscribe(res=>{
+    const token = sessionStorage.getItem('token');
+    const headers=new HttpHeaders({Authorization: ' Basic '+token});
+
+    this.httpClient.get(this.addToCartUrl+id,{headers}).subscribe(res=>{
       alert("Added to cart sucessfully");
     },error=>{
       alert("Can't add to cart");

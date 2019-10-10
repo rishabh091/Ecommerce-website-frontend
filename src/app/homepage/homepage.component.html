@@ -54,7 +54,7 @@
 </div>
 
 <!--carousel-->
-<div *ngIf="categorySelected == ''" class="container-fluid mb-2 mt-2">
+<div *ngIf="categorySelected == ''" class="container-fluid mb-3 mt-2">
   <div id="demo" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ul class="carousel-indicators">
@@ -111,44 +111,48 @@
   </div>
 </div>
 
-<!--homepage preview-->
-<div
-  *ngIf="!checkCategorySelected()"
-  class="container-fluid mt-3 p-4 mb-4 mt-4"
->
-  <div class="d-flex mb-2 ml-3">
-    <h2 class="display-6 heading-border">
-      <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
-      ><span class="text-success">Mobiles</span>
-    </h2>
+<!--demo homepage-->
+<div class="container-fluid">
+  <!--homepage preview-->
+  <div
+    *ngIf="!checkCategorySelected()"
+    class="container-fluid mt-3 p-4 mb-4 mt-4"
+  >
+    <div class="d-flex mb-3 ml-3">
+      <h2 class="display-6 heading-border">
+        <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
+        ><span class="text-success">Mobiles</span>
+      </h2>
+    </div>
+    <app-preview [category]="mobiles"></app-preview>
   </div>
-  <app-preview [category]="mobiles"></app-preview>
-</div>
 
-<div
-  *ngIf="!checkCategorySelected()"
-  class="container-fluid mt-3 p-4 mb-4 mt-4"
->
-  <div class="d-flex mb-2 ml-3">
-    <h2 class="display-6 heading-border">
-      <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
-      ><span class="text-success">Laptops</span>
-    </h2>
+  <div
+    *ngIf="!checkCategorySelected()"
+    class="container-fluid mt-3 p-4 mb-4 mt-4"
+  >
+    <div class="d-flex mb-3 ml-3">
+      <h2 class="display-6 heading-border">
+        <span class="text-muted" style="font-size: 1.5rem;">Top picks for </span
+        ><span class="text-success">Laptops</span>
+      </h2>
+    </div>
+    <app-preview [category]="laptops"></app-preview>
   </div>
-  <app-preview [category]="laptops"></app-preview>
-</div>
 
-<div
-  *ngIf="!checkCategorySelected()"
-  class="container-fluid mt-3 p-4 mb-4 mt-4"
->
-  <div class="d-flex mb-2 ml-3">
-    <h2 class="display-6 heading-border">
-      <span class="text-muted" style="font-size: 1.5rem;">Top picks for</span
-      ><span class="text-success">Tablets</span>
-    </h2>
+  <div
+    *ngIf="!checkCategorySelected()"
+    class="container-fluid mt-3 p-4 mb-4 mt-4"
+  >
+    <div class="d-flex mb-3 ml-3">
+      <h2 class="display-6 heading-border">
+        <span class="text-muted" style="font-size: 1.5rem;">Top picks for</span
+        ><span class="text-success">Tablets</span>
+      </h2>
+    </div>
+    <app-preview [category]="tablets"></app-preview>
   </div>
-  <app-preview [category]="tablets"></app-preview>
+
 </div>
 
 <!--card columns-->
@@ -268,7 +272,7 @@
     <div class="col-sm-10">
       <div class="container text-center mb-4 mt-3">
         <div class="text-muted">Our exciting range of</div>
-        <h3 class="display-4 text-danger text-uppercase">
+        <h3 class="display-5 text-danger text-uppercase">
           {{ categorySelected }}
         </h3>
       </div>
@@ -283,9 +287,9 @@
                 [src]="i.imgUrl"
               />
               <div class="card-body">
-                <h4 class="card-title heading-border pb-2">
+                <h5 class="card-title heading-border pb-2">
                   <a href="/home/{{ i.id }}" class="text-dark">{{ i.name }}</a>
-                </h4>
+                </h5>
                 <div class="card-text">
                   <p>
                     <span class="font-weight-bold">Model : </span>

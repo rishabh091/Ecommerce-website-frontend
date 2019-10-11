@@ -1,6 +1,6 @@
 .img-size{
-    height: 500px;
-    width: 350px;
+    height: 530px;
+    width: 300px;
 }
 .heading-border{
     border-bottom: 4px solid #ca3e47;
@@ -11,6 +11,7 @@
 .flex-display{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .btn-edit{
     border-radius: 1rem;

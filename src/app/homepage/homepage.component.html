@@ -50,6 +50,38 @@
         </button>
       </p>
     </div>
+
+    <div class="pr-5 d-flex">
+      <img
+        src="https://image.flaticon.com/icons/svg/125/125278.svg"
+        class="img-fluid navbar-image"
+      />
+      <p class="text-center pl-2 pt-1">
+        <button
+          type="button"
+          class="text-light btn pl-0 pt-0"
+          (click)="filter('televisions')"
+        >
+          Televisions
+        </button>
+      </p>
+    </div>
+
+    <div class="pr-5 d-flex">
+      <img
+        src="https://image.flaticon.com/icons/png/512/2113/2113324.png"
+        class="img-fluid navbar-image"
+      />
+      <p class="text-center pl-2 pt-1">
+        <button
+          type="button"
+          class="text-light btn pl-0 pt-0"
+          (click)="filter('earphones')"
+        >
+          Earphones
+        </button>
+      </p>
+    </div>
   </div>
 </div>
 
@@ -152,51 +184,13 @@
     </div>
     <app-preview [category]="tablets"></app-preview>
   </div>
-
-</div>
-
-<!--card columns-->
-<div *ngIf="!checkCategorySelected()" class="container-fluid mt-5 mb-5">
-  <div class="container-fluid d-flex justify-content-center mb-5">
-    <h3 class="display-5 heading-border">Why prefer us?</h3>
-  </div>
-
-  <div class="card-columns">
-    <div class="card bg-lightbackground">
-      <div class="card-body text-center">
-        <img
-          src="https://image.flaticon.com/icons/svg/609/609361.svg"
-          class="img-fluid column-icon mb-3"
-        />
-        <p class="card-text">One day delivery</p>
-      </div>
-    </div>
-    <div class="card bg-lightbackground">
-      <div class="card-body text-center">
-        <img
-          src="https://image.flaticon.com/icons/svg/845/845823.svg"
-          class="img-fluid column-icon mb-3"
-        />
-        <p class="card-text">Best bang for the buck</p>
-      </div>
-    </div>
-    <div class="card bg-lightbackground">
-      <div class="card-body text-center">
-        <img
-          src="https://image.flaticon.com/icons/svg/138/138215.svg"
-          class="img-fluid column-icon mb-3"
-        />
-        <p class="card-text">Easy returns.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div *ngIf="checkCategorySelected()" class="container-fluid">
   <div class="row">
     <!--filters-->
     <div class="col-sm-2 border">
-      <div class="sticky-top">
+      <div class="sticky-top" style="top: 50px;">
         <div class="text-center pt-4 ">
           <h4 class="display-5 text-danger">FILTERS</h4>
           <hr />
@@ -280,7 +274,7 @@
       <div *ngIf="checkCategorySelected()" class="container-fluid">
         <div class="container-fluid d-flex flex-wrap">
           <div *ngFor="let i of myArray; let ind = index">
-            <div class="card text-center pt-3 mr-3 mb-5 ml-5 pl-5 pr-5 shadow">
+            <div class="card text-center pt-3 mr-3 mb-5 ml-5 pl-5 pr-5">
               <img
                 class="card-img-top img-style positon-relative m-auto"
                 alt="Product image"

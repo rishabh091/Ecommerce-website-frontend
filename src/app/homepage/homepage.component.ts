@@ -29,13 +29,15 @@ export class HomepageComponent implements OnInit {
     const token = sessionStorage.getItem("token");
     const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    this.httpClient
-      .get(this.userUrl,{headers})
-      .subscribe((res: Object) => {
-        console.log(Object.keys(res));
+    if (token != undefined) {
+      this.httpClient
+        .get(this.userUrl, { headers })
+        .subscribe((res) => {
+          console.log(res);
 
-        this.username = res.name;
-      });
+          this.username = res.name;
+        });
+    }
   }
 
   ajaxCall(url) {
@@ -55,22 +57,9 @@ export class HomepageComponent implements OnInit {
   filter(category) {
     let url = "http://localhost:10083/home/category/";
     this.email = "";
-
-    if (category == "mobiles") {
-      this.categorySelected = category;
-      url = url + category;
-      this.ajaxCall(url);
-    }
-    if (category == "laptops") {
-      this.categorySelected = category;
-      url = url + category;
-      this.ajaxCall(url);
-    }
-    if (category == "tablets") {
-      this.categorySelected = category;
-      url = url + category;
-      this.ajaxCall(url);
-    }
+    this.categorySelected = category;
+    url = url + category;
+    this.ajaxCall(url);
   }
 
   priceFilter(price1, price2) {

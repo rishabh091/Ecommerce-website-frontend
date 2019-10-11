@@ -12,8 +12,8 @@ export class HomepageComponent implements OnInit {
 
   username = "";
 
-  userUrl = "http://localhost:10083/login/userInfo/";
-  addToCartUrl="http://localhost:10083/cart/addItem/productId/";
+  userUrl = "http://localhost:10083/login/userInfo";
+  addToCartUrl = "http://localhost:10083/cart/addItem/productId/";
 
   mobiles = "mobiles";
   laptops = "laptops";
@@ -26,21 +26,16 @@ export class HomepageComponent implements OnInit {
   }
 
   getUserInfo() {
-    if (sessionStorage.getItem("email") != "" && sessionStorage.getItem("email")!=null) {
-      let email = sessionStorage.getItem("email");
-      let temp = email.split("@");
-      let emailName = temp[0];
-      let emailId = temp[1].split(".")[0];
-      let domain = temp[1].split(".")[1];
+    const token = sessionStorage.getItem("token");
+    const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-      this.httpClient
-        .get(this.userUrl + emailName + "/" + emailId + "/" + domain)
-        .subscribe((res : Object)=> {
-          console.log(Object.keys(res));
+    this.httpClient
+      .get(this.userUrl,{headers})
+      .subscribe((res: Object) => {
+        console.log(Object.keys(res));
 
-          this.username = res.name;
-        });
-    }
+        this.username = res.name;
+      });
   }
 
   ajaxCall(url) {
@@ -89,14 +84,17 @@ export class HomepageComponent implements OnInit {
     this.ajaxCall(url);
   }
 
-  addToCart(id){
-    const token = sessionStorage.getItem('token');
-    const headers=new HttpHeaders({Authorization: ' Basic '+token});
+  addToCart(id) {
+    const token = sessionStorage.getItem("token");
+    const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    this.httpClient.get(this.addToCartUrl+id,{headers}).subscribe(res=>{
-      alert("Added to cart sucessfully");
-    },error=>{
-      alert("Can't add to cart");
-    });
+    this.httpClient.get(this.addToCartUrl + id, { headers }).subscribe(
+      res => {
+        alert("Added to cart sucessfully");
+      },
+      error => {
+        alert("Can't add to cart");
+      }
+    );
   }
 }

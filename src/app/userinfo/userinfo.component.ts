@@ -29,7 +29,7 @@ export class UserinfoComponent implements OnInit {
 
   error = false;
 
-  url = "http://localhost:10083/login/userInfo/";
+  url = "http://localhost:10083/login/userInfo";
   addProductUrl = "http://localhost:10083/addProduct";
 
   constructor(
@@ -51,30 +51,25 @@ export class UserinfoComponent implements OnInit {
     const token = sessionStorage.getItem("token");
     const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    let url="http://localhost:10083/order/orderHistory";
-    this.httpClient.get(url,{headers}).subscribe(res=>{
-      this.historyArray=res;
+    let url = "http://localhost:10083/order/orderHistory";
+    this.httpClient.get(url, { headers }).subscribe(res => {
+      this.historyArray = res;
     });
   }
 
   getUserInfo() {
-    let email = sessionStorage.getItem("email");
-    let temp = email.split("@");
-    let emailName = temp[0];
-    let emailId = temp[1].split(".")[0];
-    let domain = temp[1].split(".")[1];
+    const token = sessionStorage.getItem("token");
+    const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    this.httpClient
-      .get(this.url + emailName + "/" + emailId + "/" + domain)
-      .subscribe((res: Object) => {
-        console.log(Object.keys(res));
+    this.httpClient.get(this.url,{headers}).subscribe((res: Object) => {
+      console.log(Object.keys(res));
 
-        this.name = res.name;
-        this.email = res.email;
-        this.address = res.address;
-        this.mobile = res.mobile;
-        this.isSeller = res.seller;
-      });
+      this.name = res.name;
+      this.email = res.email;
+      this.address = res.address;
+      this.mobile = res.mobile;
+      this.isSeller = res.seller;
+    });
   }
 
   sendData() {

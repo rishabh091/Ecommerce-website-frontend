@@ -15,10 +15,6 @@ export class HomepageComponent implements OnInit {
   userUrl = "http://localhost:10083/login/userInfo";
   addToCartUrl = "http://localhost:10083/cart/addItem/productId/";
 
-  mobiles = "mobiles";
-  laptops = "laptops";
-  tablets = "tablets";
-
   categorySelected = "";
 
   ngOnInit() {
@@ -43,6 +39,7 @@ export class HomepageComponent implements OnInit {
   ajaxCall(url) {
     this.httpClient.get(url).subscribe(res => {
       this.myArray = res;
+      console.log(res);
     });
   }
 

@@ -1,5 +1,15 @@
 <app-navbar></app-navbar>
 
+<!--alert-->
+<div
+  *ngIf="buyBoolean"
+  class="container-fluid alert alert-success alert-dismissible fade show text-center sticky-top"
+  style="top: 50px;"
+>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Thank you for buying</strong>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
@@ -63,7 +73,7 @@
     </div>
 
     <!--final price info-->
-    <div *ngIf="totalPrice" class="col-sm-4">
+    <div *ngIf="totalPrice" class="col-sm-4 responsive-margin">
       <div class="container-fluid border mt-5">
         <div class="text-center pt-2 pb-2">PRICE DETAILS</div>
         <hr class="ml-3 mr-3" />
@@ -105,7 +115,7 @@
 </div>
 
 <!--Back and procced button-->
-<div class="container-fluid position-fixed custom-pos">
+<div class="container-fluid custom-pos position-fixed">
   <div class="d-flex justify-content-center">
     <button
       type="button"
@@ -126,19 +136,7 @@
   </div>
 </div>
 
-<!--panda-->
+<!--empty view-->
 <div *ngIf="!totalPrice" class="container mt-5">
-  <div class="text-center text-muted">Your cart is empty and sad!</div>
-  <div class="text-center text-muted font-weight-bold">
-    Shop with us and lets fill it up and make it happy!
-  </div>
-  <div class="text-center">
-    <img
-      src="https://image.flaticon.com/icons/svg/1167/1167615.svg"
-      class="img-fluid"
-      height="200px"
-      width="200px"
-      style="opacity: 0.5;"
-    />
-  </div>
+  <div class="text-center text-muted">Your cart is empty!</div>
 </div>

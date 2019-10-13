@@ -1,8 +1,10 @@
-<app-navbar></app-navbar>
+<app-navbar (searchList)="searchDisplay($event)"></app-navbar>
 
 <!--Secondary navbar-->
 <div class="container-fluid navbar-color-secondary sticky-top">
-  <div class="d-flex pt-2 justify-content-center">
+  <div
+    class="d-flex pt-2 justify-content-center flex-wrap"
+  >
     <div class="pr-5 d-flex">
       <img
         src="https://image.flaticon.com/icons/svg/235/235265.svg"
@@ -67,6 +69,16 @@
       </p>
     </div>
   </div>
+</div>
+
+<!--alert-->
+<div
+  *ngIf="addToCartBoolean"
+  class="container-fluid alert alert-success alert-dismissible fade show text-center sticky-top"
+  style="top: 50px;"
+>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Item added to cart</strong>
 </div>
 
 <!--carousel-->
@@ -260,7 +272,7 @@
     </div>
 
     <!--Products-->
-    <div class="col-sm-10">
+    <div class="col-sm-10" *ngIf="myArray.length != 0">
       <div class="container text-center mb-4 mt-3">
         <div class="text-muted">Our exciting range of</div>
         <h3 class="display-5 text-danger text-uppercase">
@@ -304,6 +316,11 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!--search error-->
+    <div class="col-sm-10" *ngIf="myArray.length == 0">
+      <div class="container text-muted text-center pt-5">No results found</div>
     </div>
   </div>
 </div>

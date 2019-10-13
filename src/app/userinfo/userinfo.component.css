@@ -11,3 +11,13 @@
     height: 100px;
     width: 200px;
 }
+
+@media screen and (max-width: 800px){
+    .img-size{
+        height: 100px;
+        width: 50px;
+    }
+    .wrap-class{
+        flex-wrap: wrap;
+    }
+}

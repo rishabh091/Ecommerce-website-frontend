@@ -26,6 +26,9 @@ export class ProductDetailsComponent implements OnInit {
   addToCartUrl = "http://localhost:10083/cart/addItem/productId/";
   myArray;
 
+  addToCartBoolean=false;
+  editProductBoolean=false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -78,7 +81,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.httpClient.get(this.addToCartUrl + this.id, { headers }).subscribe(
       res => {
-        alert("Added to cart sucessfully");
+        this.addToCartBoolean=true;
       },
       error => {
         alert("Can't add to cart");
@@ -105,7 +108,7 @@ export class ProductDetailsComponent implements OnInit {
     };
 
     this.httpClient.post(url,product,{headers}).subscribe(res=>{
-      alert(res);
+      this.editProductBoolean=true;
     });
   }
 }

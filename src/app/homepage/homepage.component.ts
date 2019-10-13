@@ -16,9 +16,18 @@ export class HomepageComponent implements OnInit {
   addToCartUrl = "http://localhost:10083/cart/addItem/productId/";
 
   categorySelected = "";
+  customSearch;
+
+  addToCartBoolean=false;
 
   ngOnInit() {
     this.getUserInfo();
+  }
+
+  searchDisplay($event){
+    this.customSearch=$event.search;
+    this.categorySelected=$event.search;
+    this.myArray=$event.result;
   }
 
   getUserInfo() {
@@ -60,7 +69,8 @@ export class HomepageComponent implements OnInit {
   }
 
   priceFilter(price1, price2) {
-    let url =
+    if(!this.customSearch){
+      let url =
       "http://localhost:10083/home/category/" +
       this.categorySelected +
       "/priceFilter/";
@@ -68,6 +78,11 @@ export class HomepageComponent implements OnInit {
     url = url + price1 + "/" + price2;
 
     this.ajaxCall(url);
+    }
+    else{
+      let url="http://localhost:10083/search/q/"+this.customSearch+"/priceFilter/"+price1+"/"+price2;
+      this.ajaxCall(url);
+    }
   }
 
   addToCart(id) {
@@ -76,7 +91,7 @@ export class HomepageComponent implements OnInit {
 
     this.httpClient.get(this.addToCartUrl + id, { headers }).subscribe(
       res => {
-        alert("Added to cart sucessfully");
+        this.addToCartBoolean=true;
       },
       error => {
         alert("Can't add to cart");

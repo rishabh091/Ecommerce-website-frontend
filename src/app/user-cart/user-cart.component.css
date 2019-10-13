@@ -24,3 +24,19 @@
     bottom: 30px;
     z-index: 2;
 }
+
+@media screen and (max-width : 800px){
+    .img-size{
+        height: 100px;
+        width: 50px;
+        margin-bottom: 20px;
+    }
+    .custom-pos{
+        position: relative;
+        z-index: 0;
+        bottom: 0px;
+    }
+    .responsive-margin{
+        margin-bottom: 100px;
+    }
+}

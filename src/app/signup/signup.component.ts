@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
   url = "http://localhost:10083/signup/sendingData";
 
   formValidate = true;
+  errorField = false;
 
   constructor(
     private httpClient: HttpClient,
@@ -58,7 +59,9 @@ export class SignupComponent implements OnInit {
       this.httpClient.post(this.url, json).subscribe(res => {
         console.log("Post Request succesfull");
         this.router.navigate(["/login"]);
-      });
+      }),error=>{
+        this.errorField=true;
+      };
     }
   }
 }

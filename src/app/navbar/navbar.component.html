@@ -22,8 +22,10 @@
         class="form-control mr-sm-2 search-width"
         type="text"
         placeholder="Search"
+        [(ngModel)]="search"
+        [ngModelOptions]="{ standalone: true }"
       />
-      <button class="btn btn-edit">Search</button>
+      <button class="btn btn-edit" (click)="searchOnClick()">Search</button>
     </form>
 
     <ul class="navbar-nav position-relative ml-auto">

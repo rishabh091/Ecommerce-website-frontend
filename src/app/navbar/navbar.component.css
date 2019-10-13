@@ -44,3 +44,10 @@
 .navbar-color-secondary{
     background: #414141;
 }
+
+@media screen and (max-width: 800px){
+    .search-width{
+        width: 300px;
+        margin-bottom: 20px;
+    }
+}

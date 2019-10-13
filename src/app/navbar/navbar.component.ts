@@ -1,41 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { AppService } from '../app.service';
-import { AuthenticationService } from '../authentication.service';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { AppService } from "../app.service";
+import { AuthenticationService } from "../authentication.service";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
+  logoutUrl = "http://localhost:10083/login/logout";
+  search;
 
-  logoutUrl="http://localhost:10083/login/logout";
+  @Output() searchList = new EventEmitter<Object>();
 
-  constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient,private service: AppService,private authService: AuthenticationService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private httpClient: HttpClient,
+    private service: AppService,
+    private authService: AuthenticationService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  logout(){
-    if(this.service.checkLogin()){
+  logout() {
+    if (this.service.checkLogin()) {
       this.authService.logoutService();
 
-      sessionStorage.setItem("email","");
+      sessionStorage.setItem("email", "");
 
-      this.httpClient.get(this.logoutUrl).subscribe(res=>{
+      this.httpClient.get(this.logoutUrl).subscribe(res => {
         console.log(JSON.stringify(res));
       });
 
       location.reload();
-      this.router.navigate(['/home']);
+      this.router.navigate(["/home"]);
     }
   }
 
-  checkLogin(){
+  checkLogin() {
     return this.service.checkLogin();
   }
 
+  searchOnClick() {
+    let url = "http://localhost:10083/search/";
+
+    if (this.search != undefined && this.search != " ") {
+      this.httpClient.get(url + this.search).subscribe(res => {
+        let object = {};
+        object["search"] = this.search;
+        object["result"] = res;
+
+        this.searchList.emit(object);
+      });
+    }
+  }
 }

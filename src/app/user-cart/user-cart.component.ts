@@ -12,6 +12,8 @@ export class UserCartComponent implements OnInit {
   cartArray;
   totalPrice;
 
+  buyBoolean=false;
+
   getCartUrl = "http://localhost:10083/cart";
   incrementUrl = "http://localhost:10083/cart/increment/1/product/";
   decrementUrl = "http://localhost:10083/cart/decrement/1/product/";
@@ -106,7 +108,7 @@ export class UserCartComponent implements OnInit {
     const headers = new HttpHeaders({Authorization: " Basic " + token});
 
     this.httpClient.get(url,{headers}).subscribe(res=>{
-      alert(res);
+      this.buyBoolean=true;
       this.ajaxCall(this.getCartUrl);
     });
   }

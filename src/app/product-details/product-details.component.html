@@ -1,5 +1,25 @@
 <app-navbar></app-navbar>
 
+<!--alert-->
+<div
+  *ngIf="addToCartBoolean"
+  class="container-fluid alert alert-success alert-dismissible fade show text-center sticky-top"
+  style="top: 50px;"
+>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Item added to cart</strong>
+</div>
+
+<!--alert for edit products-->
+<div
+  *ngIf="editProductBoolean"
+  class="container-fluid alert alert-warning alert-dismissible fade show text-center sticky-top"
+  style="top: 50px;"
+>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Product edited!</strong>
+</div>
+
 <div class="container-fluid flex-display mt-4 mr-4">
   <div class="mr-5"><img [src]="imgSrc" class="img-fluid img-size" /></div>
   <div>
@@ -180,6 +200,7 @@
         <button
           type="button"
           class="btn btn-danger rounded-border"
+          data-dismiss="modal"
           (click)="editData()"
         >
           Edit

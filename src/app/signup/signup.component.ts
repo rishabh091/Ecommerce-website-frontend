@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
 
   formValidate = true;
   errorField = false;
+  sameEmailBool=false;
 
   constructor(
     private httpClient: HttpClient,
@@ -58,7 +59,12 @@ export class SignupComponent implements OnInit {
 
       this.httpClient.post(this.url, json).subscribe(res => {
         console.log("Post Request succesfull");
-        this.router.navigate(["/login"]);
+        if(res){
+          this.router.navigate(["/login"]);
+        }
+        else{
+          this.sameEmailBool=true;
+        }
       }),error=>{
         this.errorField=true;
       };

@@ -19,13 +19,14 @@
   <div class="collapse navbar-collapse ml-5" id="collapsibleNavbar">
     <form class="form-inline position-relative ml-auto">
       <input
+        *ngIf="homepageActive"
         class="form-control mr-sm-2 search-width"
         type="text"
         placeholder="Search"
         [(ngModel)]="search"
         [ngModelOptions]="{ standalone: true }"
       />
-      <button class="btn btn-edit" (click)="searchOnClick()">Search</button>
+      <button *ngIf="homepageActive" class="btn btn-edit" (click)="searchOnClick()">Search</button>
     </form>
 
     <ul class="navbar-nav position-relative ml-auto">

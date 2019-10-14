@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AppService } from "../app.service";
 import { Router } from "@angular/router";
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: "app-userinfo",
@@ -13,10 +14,18 @@ export class UserinfoComponent implements OnInit {
   email;
   address;
   mobile;
+  password;
   isSeller: Boolean;
+
+  //for edit password
+  oldPassword;
+  newPassword;
+  newPasswordConfirm;
+  passchangeBool=false;
 
   //for history
   historyArray;
+  user;
 
   productName;
   price;
@@ -31,11 +40,14 @@ export class UserinfoComponent implements OnInit {
 
   url = "http://localhost:10083/login/userInfo";
   addProductUrl = "http://localhost:10083/addProduct";
+  logoutUrl = "http://localhost:10083/login/logout";
+
 
   constructor(
     private httpClient: HttpClient,
     private service: AppService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -61,11 +73,13 @@ export class UserinfoComponent implements OnInit {
     const token = sessionStorage.getItem("token");
     const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    this.httpClient.get(this.url,{headers}).subscribe((res: Object) => {
+    this.httpClient.get(this.url, { headers }).subscribe((res: Object) => {
       console.log(Object.keys(res));
+      this.user = res;
 
       this.name = res.name;
       this.email = res.email;
+      this.password = res.password;
       this.address = res.address;
       this.mobile = res.mobile;
       this.isSeller = res.seller;
@@ -104,5 +118,78 @@ export class UserinfoComponent implements OnInit {
     } else {
       this.error = true;
     }
+  }
+
+  savePassword() {
+    if (
+      this.oldPassword != undefined &&
+      this.newPassword != undefined &&
+      this.newPasswordConfirm != undefined
+    ) {
+      if (this.oldPassword == this.password) {
+        if (this.newPassword == this.newPasswordConfirm) {
+          this.password = this.newPassword;
+          this.passchangeBool=true;
+          alert("success");
+        } else {
+          alert("Passwords doesn't match");
+        }
+      } else {
+        alert("Old password is incorrect");
+      }
+    } else {
+      alert("fields cannot be left empty");
+    }
+  }
+
+  editProfile() {
+    const token = sessionStorage.getItem("token");
+    const headers = new HttpHeaders({ Authorization: " Basic " + token });
+
+    let editUrl = "http://localhost:10083/login/editProfile";
+    let user = {
+      name: this.name,
+      password: this.password,
+      email: this.email,
+      mobile: this.mobile,
+      address: this.address,
+      isSeller: this.isSeller
+    };
+
+    if (
+      this.name &&
+      this.password &&
+      this.email &&
+      this.mobile &&
+      this.address
+    ) {
+      this.httpClient.post(editUrl, user, { headers }).subscribe(res => {
+        if(this.passchangeBool){
+          this.logout();
+        }
+        alert(res);
+      });
+    }
+    else{
+      alert("fields cannot be left empty");
+    }
+  }
+  logout() {
+    if (this.service.checkLogin()) {
+      this.authService.logoutService();
+
+      sessionStorage.setItem("email", "");
+
+      this.httpClient.get(this.logoutUrl).subscribe(res => {
+        console.log(JSON.stringify(res));
+      });
+
+      location.reload();
+      this.router.navigate(["/home"]);
+    }
+  }
+
+  checkLogin() {
+    return this.service.checkLogin();
   }
 }

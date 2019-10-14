@@ -11,6 +11,21 @@
     height: 100px;
     width: 200px;
 }
+.edit-link{
+    color: darkslateblue;
+}
+.custom-border{
+    border: none;
+    border-bottom: 1px solid black;
+}
+.rounded-circle-custom{
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;  
+}
+.rounded-circle-custom-reverse{
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;  
+}
 
 @media screen and (max-width: 800px){
     .img-size{

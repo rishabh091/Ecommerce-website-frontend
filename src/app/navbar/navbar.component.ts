@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { AppService } from "../app.service";
@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   search;
 
   @Output() searchList = new EventEmitter<Object>();
+  @Input() homepageActive;
 
   constructor(
     private router: Router,

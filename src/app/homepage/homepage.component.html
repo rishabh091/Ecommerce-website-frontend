@@ -203,23 +203,26 @@
   </div>
 
   <!--info-->
-  <div class="container-fluid text-muted">
-    GeekyStore: The One-stop Electronics Shopping Destination
-  </div>
-  <div class="container-fluid text-muted mb-5">
-    E-commerce is revolutionizing the way we all shop in India. Why do you want
-    to hop from one store to another in search of the latest phone when you can
-    find it on the Internet in a single click? Not only mobiles. GeekyStore
-    houses every electronic item and we are adding more, from trending
-    electronics like laptops, tablets, smartphones to mobile accessories and
-    Televisions;we got them all covered. You name it, and you can stay assured
-    about finding them all here. For those of you with erratic working hours,
-    GeekyStore is your best bet. Shop in your PJs, at night or in the wee hours
-    of the morning. This e-commerce never shuts down. What's more, with our
-    year-round shopping festivals and events, our prices are irresistible. We're
-    sure you'll find yourself picking up more than what you had in mind. If you
-    are wondering why you should shop from GeekyStore when there are multiple
-    options available to you, well, the below will answer your question.
+  <div class="container-fluid" *ngIf="!checkCategorySelected()">
+    <div class="font-weight-bold text-muted">
+      GeekyStore: The One-stop Electronics Shopping Destination
+    </div>
+    <div class="text-muted mb-5">
+      E-commerce is revolutionizing the way we all shop in India. Why do you
+      want to hop from one store to another in search of the latest phone when
+      you can find it on the Internet in a single click? Not only mobiles.
+      GeekyStore houses every electronic item and we are adding more, from
+      trending electronics like laptops, tablets, smartphones to mobile
+      accessories and Televisions;we got them all covered. You name it, and you
+      can stay assured about finding them all here. For those of you with
+      erratic working hours, GeekyStore is your best bet. Shop in your PJs, at
+      night or in the wee hours of the morning. This e-commerce never shuts
+      down. What's more, with our year-round shopping festivals and events, our
+      prices are irresistible. We're sure you'll find yourself picking up more
+      than what you had in mind. If you are wondering why you should shop from
+      GeekyStore when there are multiple options available to you, well, the
+      below will answer your question.
+    </div>
   </div>
 </div>
 

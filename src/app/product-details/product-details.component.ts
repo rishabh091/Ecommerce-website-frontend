@@ -70,7 +70,7 @@ export class ProductDetailsComponent implements OnInit {
 
   checkUserSeller(){
     let url="http://localhost:10083/login/userInfo";
-    this.httpClient.get(url).subscribe(res=>{
+    this.httpClient.get(url).subscribe((res: any)=>{
       this.isSeller=res.seller;
     });
   }

@@ -37,7 +37,7 @@ export class HomepageComponent implements OnInit {
     if (token != undefined) {
       this.httpClient
         .get(this.userUrl, { headers })
-        .subscribe((res) => {
+        .subscribe((res : any) => {
           console.log(res);
 
           this.username = res.name;
@@ -62,7 +62,6 @@ export class HomepageComponent implements OnInit {
 
   filter(category) {
     let url = "http://localhost:10083/home/category/";
-    this.email = "";
     this.categorySelected = category;
     url = url + category;
     this.ajaxCall(url);
@@ -74,7 +73,6 @@ export class HomepageComponent implements OnInit {
       "http://localhost:10083/home/category/" +
       this.categorySelected +
       "/priceFilter/";
-    this.email = "";
     url = url + price1 + "/" + price2;
 
     this.ajaxCall(url);

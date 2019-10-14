@@ -73,8 +73,7 @@ export class UserinfoComponent implements OnInit {
     const token = sessionStorage.getItem("token");
     const headers = new HttpHeaders({ Authorization: " Basic " + token });
 
-    this.httpClient.get(this.url, { headers }).subscribe((res: Object) => {
-      console.log(Object.keys(res));
+    this.httpClient.get(this.url, { headers }).subscribe((res: any) => {
       this.user = res;
 
       this.name = res.name;

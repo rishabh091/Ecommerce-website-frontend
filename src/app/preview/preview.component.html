@@ -1,6 +1,6 @@
 <div class="container-fluid d-flex flex-wrap">
   <div *ngFor="let i of myArray; let ind = index">
-    <div *ngIf="ind<4" class="border mr-3">
+    <div *ngIf="ind < 4" class="border mr-3">
       <div
         class="card text-center card-height ml-3 border-0 p-2"
         style="height: 420px;"
@@ -16,8 +16,7 @@
           </h5>
           <div class="card-text">
             <p>
-              <span class="font-weight-bold">Model : </span>
-              <span>{{ i.model }}</span>
+              {{ i.model }}
             </p>
             <p>
               <span class="font-weight-bold">Price : </span>

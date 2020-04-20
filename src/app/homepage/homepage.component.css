@@ -60,6 +60,7 @@
 .carousel-img-size{
     height: 400px;
     width: 100%;
+    object-fit: cover;
 }
 .bg-lightbackground{
     background: #f9f9f9;
@@ -75,5 +76,6 @@
 @media screen and (max-width: 800px){
     .carousel-img-size{
         height: 200px;
+        object-fit: cover;
     }
 }
